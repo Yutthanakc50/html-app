@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Prompt', sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(15,23,42,0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 10%;
+      background: linear-gradient(135deg, #0ea5e9, #9333ea);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #0f172a;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .services {
+      padding: 80px 10%;
+    }
+
+    .services h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .features {
+      padding: 80px 10%;
+      background: #020617;
+    }
+
+    .features ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 20px;
+      list-style: none;
+    }
+
+    .features li {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .pricing {
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    .pricing .card {
+      text-align: center;
+    }
+
+    .price {
+      font-size: 2rem;
+      margin: 15px 0;
+      color: #22c55e;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 80px 10%;
+      background: linear-gradient(135deg,#9333ea,#0ea5e9);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @media(max-width:768px){
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MyService</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Pricing</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>บริการของเราที่ช่วยให้ธุรกิจคุณเติบโต</h2>
+  <p>ออกแบบเว็บไซต์ พัฒนาแอป และการตลาดออนไลน์แบบครบวงจร</p>
+  <button class="btn">เริ่มต้นใช้งาน</button>
+</section>
+
+<section class="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Web Design</h3>
+      <p>ออกแบบเว็บไซต์ทันสมัย UX/UI ดี รองรับทุกอุปกรณ์</p>
+    </div>
+    <div class="card">
+      <h3>Development</h3>
+      <p>พัฒนาเว็บไซต์และระบบด้วยเทคโนโลยีล่าสุด</p>
+    </div>
+    <div class="card">
+      <h3>SEO</h3>
+      <p>เพิ่มอันดับ Google ให้ธุรกิจของคุณเติบโต</p>
+    </div>
+    <div class="card">
+      <h3>Marketing</h3>
+      <p>วางแผนการตลาดออนไลน์แบบมืออาชีพ</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2 style="text-align:center;margin-bottom:30px;">Why Choose Us</h2>
+  <ul>
+    <li>✔ ทีมงานมืออาชีพ</li>
+    <li>✔ ส่งงานตรงเวลา</li>
+    <li>✔ ราคาคุ้มค่า</li>
+    <li>✔ รองรับลูกค้าทุกขนาดธุรกิจ</li>
+  </ul>
+</section>
+
+<section class="pricing">
+  <h2>Pricing</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Basic</h3>
+      <div class="price">฿3,000</div>
+      <p>เว็บไซต์พื้นฐาน</p>
+      <button class="btn">เลือกแพ็กเกจ</button>
+    </div>
+    <div class="card">
+      <h3>Pro</h3>
+      <div class="price">฿7,000</div>
+      <p>เว็บไซต์ + SEO</p>
+      <button class="btn">เลือกแพ็กเกจ</button>
+    </div>
+    <div class="card">
+      <h3>Premium</h3>
+      <div class="price">฿15,000</div>
+      <p>ครบทุกบริการ</p>
+      <button class="btn">เลือกแพ็กเกจ</button>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>พร้อมเริ่มต้นหรือยัง?</h2>
+  <p>ติดต่อเราวันนี้เพื่อรับคำปรึกษาฟรี</p>
+  <button class="btn">ติดต่อเรา</button>
+</section>
+
+<footer>
+  © 2026 MyService. All rights reserved.
+</footer>
+
+</body>
+</html>
