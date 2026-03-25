@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Animated Map Path</title>
+<style>
+  body {
+    margin: 0;
+    background: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  svg {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  /* เส้นทาง */
+  .route {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 3s ease-in-out forwards;
+  }
+
+  /* จุด */
+  .dot {
+    fill: #f43f5e;
+    transform-origin: center;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 500 300">
+
+  <!-- เส้นโค้ง (Bezier Curve) -->
+  <path class="route"
+        d="M50,250 C150,50 350,50 450,250" />
+
+  <!-- จุดเริ่ม -->
+  <circle class="dot" cx="50" cy="250" r="6"/>
+
+  <!-- จุดปลาย -->
+  <circle class="dot" cx="450" cy="250" r="6"/>
+
+</svg>
+
+</body>
+</html>
