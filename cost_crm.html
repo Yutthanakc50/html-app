@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Prompt',sans-serif;}
+
+body{
+  display:flex;
+  background:#0f172a;
+  color:#fff;
+}
+
+/* Sidebar */
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:#020617;
+  padding:20px;
+  position:fixed;
+}
+
+.sidebar h2{
+  color:#38bdf8;
+  margin-bottom:30px;
+}
+
+.sidebar a{
+  display:block;
+  margin:10px 0;
+  color:#fff;
+  text-decoration:none;
+  padding:10px;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.sidebar a:hover{
+  background:#1e293b;
+}
+
+/* Main */
+.main{
+  margin-left:250px;
+  padding:20px;
+  width:100%;
+}
+
+/* Header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.header input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  width:250px;
+}
+
+/* Cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+}
+
+/* Table */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+th,td{
+  padding:12px;
+  text-align:left;
+}
+
+th{
+  background:#1e293b;
+}
+
+tr{
+  background:rgba(255,255,255,0.03);
+}
+
+tr:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+/* Button */
+.btn{
+  padding:8px 15px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  margin:2px;
+}
+
+.add{background:#22c55e;color:#000;}
+.edit{background:#eab308;color:#000;}
+.delete{background:#ef4444;color:#fff;}
+
+/* Form */
+.form{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+
+.form input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-left:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>CRM</h2>
+  <a href="#">Dashboard</a>
+  <a href="#">Customers</a>
+  <a href="#">Reports</a>
+</div>
+
+<div class="main">
+
+  <div class="header">
+    <h2>Dashboard</h2>
+    <a href="./index.html">HOME</a>
+    <input type="text" id="search" placeholder="ค้นหาลูกค้า...">
+  </div>
+
+  <!-- Summary -->
+  <div class="cards">
+    <div class="card">ลูกค้าทั้งหมด: <span id="total">0</span></div>
+    <div class="card">ใหม่วันนี้: 3</div>
+    <div class="card">รายได้: ฿50,000</div>
+  </div>
+
+  <!-- Form -->
+  <div class="form">
+    <input type="text" id="name" placeholder="ชื่อลูกค้า">
+    <input type="text" id="phone" placeholder="เบอร์โทร">
+    <input type="text" id="email" placeholder="อีเมล">
+    <button class="btn add" onclick="addCustomer()">เพิ่มลูกค้า</button>
+  </div>
+
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>ชื่อ</th>
+        <th>เบอร์</th>
+        <th>อีเมล</th>
+        <th>จัดการ</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+</div>
+
+<script>
+
+let customers = [];
+
+function render(){
+  let table = document.getElementById("tableBody");
+  table.innerHTML = "";
+
+  let search = document.getElementById("search").value.toLowerCase();
+
+  customers
+    .filter(c => c.name.toLowerCase().includes(search))
+    .forEach((c,index)=>{
+      table.innerHTML += `
+        <tr>
+          <td>${c.name}</td>
+          <td>${c.phone}</td>
+          <td>${c.email}</td>
+          <td>
+            <button class="btn edit" onclick="editCustomer(${index})">แก้ไข</button>
+            <button class="btn delete" onclick="deleteCustomer(${index})">ลบ</button>
+          </td>
+        </tr>
+      `;
+    });
+
+  document.getElementById("total").innerText = customers.length;
+}
+
+function addCustomer(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let email = document.getElementById("email").value;
+
+  if(!name) return alert("กรอกชื่อก่อน!");
+
+  customers.push({name,phone,email});
+  render();
+}
+
+function deleteCustomer(i){
+  customers.splice(i,1);
+  render();
+}
+
+function editCustomer(i){
+  let c = customers[i];
+  let name = prompt("แก้ชื่อ", c.name);
+  if(name){
+    customers[i].name = name;
+    render();
+  }
+}
+
+document.getElementById("search").addEventListener("input",render);
+
+render();
+
+</script>
+
+</body>
+</html>
