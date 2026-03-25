@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Product Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* IMAGE */
+  .main-img {
+    width: 100%;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+
+  .thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .thumbs img {
+    width: 70px;
+    cursor: pointer;
+    border-radius: 8px;
+    opacity: 0.7;
+  }
+
+  .thumbs img:hover {
+    opacity: 1;
+  }
+
+  /* INFO */
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .price {
+    font-size: 24px;
+    color: #ef4444;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 10px;
+  }
+
+  .rating {
+    color: #facc15;
+    margin: 10px 0;
+  }
+
+  .options button {
+    padding: 8px 14px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .options button.active {
+    background: #0ea5e9;
+    color: white;
+  }
+
+  .qty {
+    margin: 15px 0;
+  }
+
+  .qty button {
+    padding: 5px 12px;
+  }
+
+  .add-cart {
+    background: #0ea5e9;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .add-cart:hover {
+    background: #0284c7;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width: 768px){
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LEFT IMAGE -->
+  <div>
+    <img id="mainImage" class="main-img" src="https://via.placeholder.com/500">
+
+    <div class="thumbs">
+      <img src="https://via.placeholder.com/500/ff0000" onclick="changeImg(this)">
+      <img src="https://via.placeholder.com/500/00ff00" onclick="changeImg(this)">
+      <img src="https://via.placeholder.com/500/0000ff" onclick="changeImg(this)">
+    </div>
+  </div>
+
+  <!-- RIGHT INFO -->
+  <div>
+    <div class="title">สินค้า Premium</div>
+
+    <div class="rating">★★★★★ (120 รีวิว)</div>
+
+    <div class="price">
+      ฿990
+      <span class="old-price">฿1,290</span>
+    </div>
+
+    <p>รายละเอียดสินค้า: สินค้าคุณภาพดี ดีไซน์สวย ใช้งานได้จริง</p>
+
+    <!-- COLOR -->
+    <div>
+      <b>สี:</b>
+      <div class="options" id="colors">
+        <button onclick="selectOption(this)">แดง</button>
+        <button onclick="selectOption(this)">เขียว</button>
+        <button onclick="selectOption(this)">น้ำเงิน</button>
+      </div>
+    </div>
+
+    <!-- SIZE -->
+    <div>
+      <b>ขนาด:</b>
+      <div class="options" id="sizes">
+        <button onclick="selectOption(this)">S</button>
+        <button onclick="selectOption(this)">M</button>
+        <button onclick="selectOption(this)">L</button>
+      </div>
+    </div>
+
+    <!-- QTY -->
+    <div class="qty">
+      <b>จำนวน:</b>
+      <button onclick="changeQty(-1)">-</button>
+      <span id="qty">1</span>
+      <button onclick="changeQty(1)">+</button>
+    </div>
+
+    <button class="add-cart" onclick="addToCart()">เพิ่มลงตะกร้า</button>
+  </div>
+
+</div>
+
+<script>
+  function changeImg(el){
+    document.getElementById("mainImage").src = el.src;
+  }
+
+  function selectOption(el){
+    let parent = el.parentElement;
+    [...parent.children].forEach(btn => btn.classList.remove("active"));
+    el.classList.add("active");
+  }
+
+  let qty = 1;
+  function changeQty(val){
+    qty += val;
+    if(qty < 1) qty = 1;
+    document.getElementById("qty").innerText = qty;
+  }
+
+  function addToCart(){
+    alert("เพิ่มสินค้า " + qty + " ชิ้น ลงตะกร้าแล้ว!");
+  }
+</script>
+
+</body>
+</html>
