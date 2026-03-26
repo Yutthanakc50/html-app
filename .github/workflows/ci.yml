@@ -28,4 +28,4 @@ jobs:
     steps:
       - run: echo "Hello JOB 2 ${{env.COMPANY_NAME}}"
       - run: echo ${{env.SERVER_IP}}
-      - run: ${{vars.PRODUCTION_NAME}}
+      - run: echo ${{vars.PRODUCTION_NAME}}
