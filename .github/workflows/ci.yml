@@ -15,6 +15,7 @@ env:
 jobs:
   job-1:
     runs-on: ubuntu-latest
+    environment: devolopmant
     steps:
       - run: echo "CHECK ${{github.actor}}"
       - run: echo "Hello ${{env.COMPANY_NAME}}"
@@ -23,6 +24,8 @@ jobs:
       - run: echo "kuy ${{secrets.KEY_BOX}}"
   job-2:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - run: echo "Hello JOB 2 ${{env.COMPANY_NAME}}"
       - run: echo ${{env.SERVER_IP}}
+      - run: ${{vars.PRODUCTION_NAME}}
